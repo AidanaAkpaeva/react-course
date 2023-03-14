@@ -2,31 +2,40 @@
   display: flex;
   position: relative;
   width: 100%;
-  transition: width .2s;
+  transition: width 0.2s;
 }
 
 .product-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 0 20px 20px 0;
-  padding: 15px 15px 50px;
+  padding: 15px;
   text-align: left;
-  border-bottom: 2px solid #F5F5F5;
+  border-bottom: 2px solid #f5f5f5;
   border-radius: 6px;
   background: white;
   font-family: "Open Sans";
-  transition: .3s ease-in;
+  transition: 0.3s ease-in;
   cursor: pointer;
 }
 
 .product-item:hover {
-  box-shadow: 0px 2px 4px rgba(59, 69, 123, 0.2), 0px 4px 8px rgba(92, 107, 192, 0.2);
+  box-shadow: 0px 2px 4px rgba(59, 69, 123, 0.2),
+    0px 4px 8px rgba(92, 107, 192, 0.2);
 }
 
-.product-img {
+.product-image {
   display: block;
   width: 100%;
 }
 
 .product-list {
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  justify-content: space-between;
+  padding: 10px;
   background-color: #fafafa;
 }
 
@@ -35,7 +44,7 @@
   line-height: 24px;
   letter-spacing: 0.0275em;
   margin-bottom: 10px;
-  color: #19191D;
+  color: #19191d;
 }
 
 .product-price {
@@ -58,21 +67,21 @@
 }
 
 .star {
-	padding: 0;
+  padding: 0;
   margin: 0 1px;
-	font-size: 16px;
-	line-height: 1;
-	color: lightgrey;
-	text-shadow: 1px 1px #bbb;
+  font-size: 16px;
+  line-height: 1;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
 }
 
 .star::before {
   font-family: FontAwesome;
-	content: "\f005";
+  content: "\f005";
 }
 
 .active-star {
-	color: #FB8200;
+  color: #fb8200;
 }
 
 .buttons {
@@ -96,14 +105,13 @@
   color: rgb(0, 0, 0);
 }
 
-.btn-favorites::before  {
+.btn-favorites::before {
   content: "\f004";
 }
 
 .btn-favorites:hover {
   color: rgb(233, 68, 46);
 }
-
 
 @media only screen and (min-width: 450px) {
   .product-wrapper {

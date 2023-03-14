@@ -1,14 +1,19 @@
-import * as React from 'react';
-import Card from './../components/card/Card';
-import { cardList } from './../helpers/CardList';
-import './style.css';
+import React from "react";
+import ListProducts from "../components/listProducts/ListProducts";
+import Searchbar from "../components/searchbar/Searchbar";
+import "./style.css";
 
+interface InputState {
+  inputValue: string;
+}
 
-class HomePage extends React.Component {
-  constructor(props) {
+interface InputProps {}
+
+class HomePage extends React.Component<InputProps, InputState> {
+  constructor(props: InputProps) {
     super(props);
     this.state = {
-      inputValue: '',
+      inputValue: "",
     };
   }
 
@@ -16,12 +21,12 @@ class HomePage extends React.Component {
     const input = event.target;
     const value = input.value;
 
-    localStorage.setItem('inputValue', value);
+    localStorage.setItem("inputValue", value);
     this.setState({ [input.name]: value });
-  }
+  };
 
-  componentDidMount() {
-    const inputValue = localStorage.getItem('inputValue');
+  componentDidMount(): void {
+    const inputValue = localStorage.getItem("inputValue");
     this.setState({ inputValue });
   }
 
@@ -29,47 +34,22 @@ class HomePage extends React.Component {
     const input = event.target;
     const value = input.value;
 
-    localStorage.setItem('inputValue', value);
+    localStorage.setItem("inputValue", value);
 
-    const inputValue = localStorage.getItem('inputValue');
-    this.setState({ inputValue })
-  }
+    const inputValue = localStorage.getItem("inputValue");
+    this.setState({ inputValue });
+  };
 
   render() {
-    const filtredCardList = cardList.filter(
-      (card) => {
-        const allCard = card.descr + card.additional + card.price;
-        return allCard.toLowerCase().indexOf(this.state.inputValue) !== -1;
-      }
-    );
     return (
       <div className="container-home container">
-        <div className="search">
-          <input
-            className="input-home"
-            type="text"
-            placeholder="Search..."
-            name="inputValue"
-            onChange={this.handleChange}
-            value={this.state.inputValue || ''}
-             />
-          <button
-            className='btn-reset'
-            onClick={this.handleReset}
-          ></button>
-        </div>
-        
-        <ul className="products">
-        
-          {filtredCardList.map((card, index) => {
-            return <Card
-              key={index}
-              descr={card.descr}
-              img={card.img}
-              price={card.price}
-              additional={card.additional} />
-          })}
-        </ul >
+        <Searchbar
+          onChange={this.handleChange}
+          value={this.state.inputValue}
+          onClick={this.handleReset}
+        />
+
+        <ListProducts />
       </div>
     );
   }

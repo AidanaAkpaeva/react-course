@@ -1,0 +1,19 @@
+.nav-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  height: 20vh;
+  background-color: #2b2929;
+}
+
+.nav-link {
+  margin: auto 0;
+  height: 32px;
+  font-size: 28px;
+  color: white;
+}
+
+.active {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}

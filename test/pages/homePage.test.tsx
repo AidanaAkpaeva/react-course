@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import HomePage from "./../../src/pages/HomePage";
+import MainPage from "./../../src/pages/MainPage";
 
-describe("HomePage component testing", () => {
-  test("HomePage", () => {
-    render(<HomePage />);
+describe("MainPage component testing", () => {
+  test("MainPage", () => {
+    render(<MainPage />);
 
     expect(screen.queryByRole("list")).toBeInTheDocument();
   });

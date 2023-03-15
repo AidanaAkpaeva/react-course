@@ -1,6 +1,7 @@
 import "./style.scss";
+import { CardProps } from "./interface";
 
-const Card = ({ image, descr, price, additional }) => {
+const Card = ({ image, descr, price, additional }: CardProps) => {
   return (
     <li className="product-wrapper">
       <div className="product-item">

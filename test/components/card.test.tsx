@@ -5,14 +5,7 @@ import Card from "../../src/components/card/Card";
 
 describe("Card", () => {
   test("test button reset", () => {
-    render(
-      <Card
-        image={undefined}
-        descr={undefined}
-        price={undefined}
-        additional={undefined}
-      />
-    );
+    render(<Card image={""} descr={""} price={""} additional={""} />);
     expect(screen.queryByRole("listitem")).toBeInTheDocument();
   });
 });

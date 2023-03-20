@@ -1,0 +1,39 @@
+.search {
+  outline: none;
+  border: 3px solid var(--main-color);
+  border-radius: 30px;
+  transition: box-shadow 0.1ms ease-in-out;
+}
+
+.search::before {
+  content: "\f002";
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  font-family: FontAwesome;
+  font-size: 24px;
+  color: var(--main-color);
+}
+
+.input-home {
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+  height: 42px;
+  padding-left: 50px;
+}
+
+.btn-reset {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-reset::before {
+  content: "\f00d";
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-family: FontAwesome;
+  font-size: 24px;
+  color: var(--main-color);
+}

@@ -1,6 +1,6 @@
 import Main from "../pages/MainPage";
 import About from "../pages/AboutPage";
-import FormPage from "../pages/FormPage";
+import FormPage from "../pages/formPage/FormPage";
 import NotFound from "../pages/Page404";
 import { RouteProps } from "react-router-dom";
 

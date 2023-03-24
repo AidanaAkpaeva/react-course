@@ -1,4 +1,4 @@
-const CityList = [
+const cityList = [
   {
     "id": "0",
     "nameCity": "Not selected"
@@ -45,4 +45,4 @@ const CityList = [
   }
 ];
 
-export {CityList};
+export {cityList};

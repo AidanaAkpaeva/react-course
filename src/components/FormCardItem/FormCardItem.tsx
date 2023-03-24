@@ -1,13 +1,13 @@
 import "./style.scss";
 
 const FormCardItem = ({
-  Firstname,
-  Lastname,
-  Email,
-  Phone,
-  Country,
-  City,
-  AddressStreet,
+  firstName,
+  lastName,
+  email,
+  phone,
+  country,
+  city,
+  addressStreet,
 }) => {
   return (
     <li className="formCardItem-item">
@@ -16,24 +16,24 @@ const FormCardItem = ({
         <p className="formCardItem-wrapper">
           Fullname:&nbsp;
           <span className="formCardItem-inner">
-            {Firstname} {Lastname}
+            {firstName} {lastName}
           </span>
         </p>
 
         <p className="formCardItem-wrapper">
           Email:&nbsp;
-          <span className="formCardItem-inner">{Email}</span>
+          <span className="formCardItem-inner">{email}</span>
         </p>
 
         <p className="formCardItem-wrapper">
           Number phone:&nbsp;
-          <span className="formCardItem-inner">{Phone}</span>
+          <span className="formCardItem-inner">{phone}</span>
         </p>
 
         <p className="formCardItem-wrapper">
           Address:&nbsp;
           <span className="formCardItem-inner">
-            {Country}, {City}, {AddressStreet}
+            {country}, {city}, {addressStreet}
           </span>
         </p>
       </div>

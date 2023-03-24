@@ -1,6 +1,6 @@
 import React from "react";
-import ListProducts from "../components/listProducts/ListProducts";
-import Searchbar from "../components/searchbar/Searchbar";
+import ListProducts from "../components/ListProducts/ListProducts";
+import Searchbar from "../components/Searchbar/Searchbar";
 import "./style.scss";
 
 class HomePage extends React.Component<{}, {}> {

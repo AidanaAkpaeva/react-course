@@ -1,4 +1,4 @@
-const CountryList = [
+const countryList = [
   {
     "id": "0",
     "nameCountry": "Not selected"
@@ -45,4 +45,4 @@ const CountryList = [
   }
 ];
 
-export {CountryList};
+export {countryList};

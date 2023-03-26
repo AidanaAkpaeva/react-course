@@ -8,6 +8,7 @@ import FormInputStreetAddress from "../../components/FormElements/FormInputStree
 import FormCheckbox from "../../components/FormElements/FormCheckBox/FormCheckbox";
 import FormSelectAddress from "../../components/FormElements/FormInputAddress/FormSelectAddress";
 import FormCardList from "../../components/FormCardList/FormCardList";
+import FormCardItem from "../../components/FormCardItem/FormCardItem";
 
 class FormPage extends React.Component<{}, FormState> {
   private refFirstName = createRef<HTMLInputElement>();
@@ -42,79 +43,92 @@ class FormPage extends React.Component<{}, FormState> {
         streetAddressError: true,
         checkboxError: true,
       },
-      // formItems: [],
+      formItems: [],
     };
   }
 
-  checkValidForm = () => {
+  checkValidForm() {
+    let isValid = false;
     // checkFirstName
     this.refFirstName.current?.value !== "" &&
     this.refFirstName.current?.value[0] ===
       this.refFirstName.current?.value[0].toUpperCase()
-      ? (this.state.formError.firstNameError = true)
-      : (this.state.formError.firstNameError = false);
+      ? ((this.state.formError.firstNameError = true), (isValid = true))
+      : ((this.state.formError.firstNameError = false), (isValid = false));
 
     // checkLastName
     this.refLastName.current?.value !== "" &&
     this.refLastName.current?.value[0] ===
       this.refLastName.current?.value[0].toUpperCase()
-      ? (this.state.formError.lastNameError = true)
-      : (this.state.formError.lastNameError = false);
+      ? ((this.state.formError.lastNameError = true), (isValid = true))
+      : ((this.state.formError.lastNameError = false), (isValid = false));
 
     // checkEmail
     this.refEmail.current?.value !== "" &&
     this.refEmail.current?.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-      ? (this.state.formError.emailError = true)
-      : (this.state.formError.emailError = false);
+      ? ((this.state.formError.emailError = true), (isValid = true))
+      : ((this.state.formError.emailError = false), (isValid = false));
 
     // checkPhone
     this.refPhone.current?.value !== "" &&
     this.refPhone.current?.value.match(
       /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/
     )
-      ? (this.state.formError.phoneError = true)
-      : (this.state.formError.phoneError = false);
+      ? ((this.state.formError.phoneError = true), (isValid = true))
+      : ((this.state.formError.phoneError = false), (isValid = false));
 
     // checkCountry
     this.refCountry.current?.value !== "Not selected"
-      ? (this.state.formError.countryError = true)
-      : (this.state.formError.countryError = false);
+      ? ((this.state.formError.countryError = true), (isValid = true))
+      : ((this.state.formError.countryError = false), (isValid = false));
     // checkCity
     this.refCity.current?.value !== "Not selected"
-      ? (this.state.formError.cityError = true)
-      : (this.state.formError.cityError = false);
+      ? ((this.state.formError.cityError = true), (isValid = true))
+      : ((this.state.formError.cityError = false), (isValid = false));
 
     // checkStreetAddress
     this.refStreetAddress.current?.value !== ""
-      ? (this.state.formError.streetAddressError = true)
-      : (this.state.formError.streetAddressError = false);
+      ? ((this.state.formError.streetAddressError = true), (isValid = true))
+      : ((this.state.formError.streetAddressError = false), (isValid = false));
 
     // checkCheckbox
     this.refCheckbox.current?.checked === true
-      ? (this.state.formError.checkboxError = true)
-      : (this.state.formError.checkboxError = false);
-  };
+      ? ((this.state.formError.checkboxError = true), (isValid = true))
+      : ((this.state.formError.checkboxError = false), (isValid = false));
+
+    return isValid;
+  }
 
   handleClick = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    this.setState({
-      form: {
-        inputTextFirstName: this.refFirstName.current!.value,
-        inputTextLastName: this.refLastName.current!.value,
-        inputTextEmail: this.refEmail.current!.value,
-        inputTextPhone: this.refPhone.current!.value,
-        selectorCountry: this.refCountry.current!.value,
-        selectorCity: this.refCity.current!.value,
-        inputTextStreetAddress: this.refStreetAddress.current!.value,
-        inputCheckbox: this.refCheckbox.current!.checked,
-      },
-    });
-    this.checkValidForm();
-
-    // const temp = [...this.state.formItems];
-    // temp.push(1);
-    // this.setState({ formItems: temp });
+    if (this.checkValidForm() === true) {
+      this.setState((prevState) => ({
+        ...prevState,
+        form: {
+          inputTextFirstName: this.refFirstName.current!.value,
+          inputTextLastName: this.refLastName.current!.value,
+          inputTextEmail: this.refEmail.current!.value,
+          inputTextPhone: this.refPhone.current!.value,
+          selectorCountry: this.refCountry.current!.value,
+          selectorCity: this.refCity.current!.value,
+          inputTextStreetAddress: this.refStreetAddress.current!.value,
+          inputCheckbox: this.refCheckbox.current!.checked,
+        },
+        formItems: [...this.state.formItems, this.state.form],
+      }));
+    }
   };
+
+  componentDidUpdate() {
+    (this.refFirstName.current!.value = ""),
+      (this.refLastName.current!.value = ""),
+      (this.refEmail.current!.value = ""),
+      (this.refPhone.current!.value = ""),
+      (this.refCountry.current!.value = "Not selected"),
+      (this.refCity.current!.value = "Not selected"),
+      (this.refStreetAddress.current!.value = ""),
+      (this.refCheckbox.current!.checked = false);
+  }
 
   render() {
     return (
@@ -162,7 +176,8 @@ class FormPage extends React.Component<{}, FormState> {
             </form>
           </div>
         </div>
-        <FormCardList form={this.state.form} />
+        {/* {console.log(this.state.formItems)} */}
+        <FormCardList form={this.state.form} formItems={this.state.formItems} />
       </>
     );
   }

@@ -8,9 +8,9 @@ export interface CardListProps {
     selectorCity?: string;
     inputTextStreetAddress?: string;
     inputCheckbox?: boolean;
-  }
-};
+  };
+  formItems: {}[]
+}
 
 export interface CardListState {
-
-};
+}

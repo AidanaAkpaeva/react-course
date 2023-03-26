@@ -18,6 +18,6 @@ export interface FormState {
     cityError: boolean;
     streetAddressError: boolean;
     checkboxError: boolean;
-  }
- 
+  };
+  formItems: {}[]
 }

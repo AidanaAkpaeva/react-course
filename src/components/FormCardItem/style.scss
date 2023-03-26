@@ -1,9 +1,9 @@
 .formCardItem-content {
-  width: 90%;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 20px ;
+  margin: 0 20px 20px 0;
   padding: 15px;
   background-color: white;
   text-align: left;

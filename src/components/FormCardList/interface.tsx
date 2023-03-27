@@ -1,13 +1,12 @@
 export interface CardListProps {
   formItems: {
-    inputTextFirstName?: string;
-    inputTextLastName?: string;
-    inputTextEmail?: string;
-    inputTextPhone?: string;
-    selectorCountry?: string;
-    selectorCity?: string;
-    inputTextStreetAddress?: string;
-    inputCheckbox?: boolean;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    country?: string;
+    city?: string;
+    streetAddress?: string;
   }[];
 }
 

@@ -1,13 +1,13 @@
 export interface FormState {
   form: {
-    inputTextFirstName?: string;
-    inputTextLastName?: string;
-    inputTextEmail?: string;
-    inputTextPhone?: string;
-    selectorCountry?: string;
-    selectorCity?: string;
-    inputTextStreetAddress?: string;
-    inputCheckbox?: boolean;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    country?: string;
+    city?: string;
+    streetAddress?: string;
+    checkbox?: boolean;
   };
   formError: {
     firstNameError: boolean;
@@ -20,14 +20,13 @@ export interface FormState {
     checkboxError: boolean;
   };
   formItems: {
-    inputTextFirstName?: string;
-    inputTextLastName?: string;
-    inputTextEmail?: string;
-    inputTextPhone?: string;
-    selectorCountry?: string;
-    selectorCity?: string;
-    inputTextStreetAddress?: string;
-    inputCheckbox?: boolean;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    phone?: string;
+    country?: string;
+    city?: string;
+    streetAddress?: string;
   }[];
   dataSave: string;
 }

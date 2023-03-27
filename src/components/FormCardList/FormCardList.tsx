@@ -12,19 +12,31 @@ class FormCardList extends Component<CardListProps, CardListState> {
   render() {
     return (
       <ul className="container formCardList">
-        {this.props.formItems.map((_, index) => (
-          <FormCardItem
-            key={index}
-            firstName={this.props.formItems[index].inputTextFirstName}
-            lastName={this.props.formItems[index].inputTextLastName}
-            email={this.props.formItems[index].inputTextEmail}
-            phone={this.props.formItems[index].inputTextPhone}
-            country={this.props.formItems[index].selectorCountry}
-            city={this.props.formItems[index].selectorCity}
-            addressStreet={this.props.formItems[index].inputTextStreetAddress}
-          />
-          
-        ))}
+        {this.props.formItems.map(
+          (
+            {
+              firstName,
+              lastName,
+              email,
+              phone,
+              country,
+              city,
+              streetAddress,
+            },
+            index
+          ) => (
+            <FormCardItem
+              key={index}
+              firstName={firstName}
+              lastName={lastName}
+              email={email}
+              phone={phone}
+              country={country}
+              city={city}
+              addressStreet={streetAddress}
+            />
+          )
+        )}
       </ul>
     );
   }

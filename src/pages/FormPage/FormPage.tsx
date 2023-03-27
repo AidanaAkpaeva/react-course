@@ -8,7 +8,6 @@ import FormInputStreetAddress from "../../components/FormElements/FormInputStree
 import FormCheckbox from "../../components/FormElements/FormCheckBox/FormCheckbox";
 import FormSelectAddress from "../../components/FormElements/FormInputAddress/FormSelectAddress";
 import FormCardList from "../../components/FormCardList/FormCardList";
-import FormCardItem from "../../components/FormCardItem/FormCardItem";
 
 class FormPage extends React.Component<{}, FormState> {
   private refFirstName = createRef<HTMLInputElement>();
@@ -22,16 +21,17 @@ class FormPage extends React.Component<{}, FormState> {
 
   constructor(props: {}) {
     super(props);
+
     this.state = {
       form: {
-        inputTextFirstName: "",
-        inputTextLastName: "",
-        inputTextEmail: "",
-        inputTextPhone: "",
-        selectorCountry: "",
-        selectorCity: "",
-        inputTextStreetAddress: "",
-        inputCheckbox: false,
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        country: "",
+        city: "",
+        streetAddress: "",
+        checkbox: false,
       },
       formError: {
         firstNameError: true,
@@ -108,40 +108,32 @@ class FormPage extends React.Component<{}, FormState> {
 
   handleClick = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    if (this.checkValidForm() === false) {
-      this.setState((prevState) => ({
-        ...prevState,
-        form: {
-          inputTextFirstName: this.refFirstName.current!.value,
-          inputTextLastName: this.refLastName.current!.value,
-          inputTextEmail: this.refEmail.current!.value,
-          inputTextPhone: this.refPhone.current!.value,
-          selectorCountry: this.refCountry.current!.value,
-          selectorCity: this.refCity.current!.value,
-          inputTextStreetAddress: this.refStreetAddress.current!.value,
-          inputCheckbox: this.refCheckbox.current!.checked,
-        },
-        dataSave: "",
-      }));
-    } else {
-      this.setState(
+    let form = {
+      firstName: this.refFirstName.current!.value,
+      lastName: this.refLastName.current!.value,
+      email: this.refEmail.current!.value,
+      phone: this.refPhone.current!.value,
+      country: this.refCountry.current!.value,
+      city: this.refCity.current!.value,
+      streetAddress: this.refStreetAddress.current!.value,
+      checkbox: this.refCheckbox.current!.checked,
+    };
+    if (this.checkValidForm() === true) {
+      await this.setState(
         (prevState) => ({
           ...prevState,
-          form: {
-            inputTextFirstName: this.refFirstName.current!.value,
-            inputTextLastName: this.refLastName.current!.value,
-            inputTextEmail: this.refEmail.current!.value,
-            inputTextPhone: this.refPhone.current!.value,
-            selectorCountry: this.refCountry.current!.value,
-            selectorCity: this.refCity.current!.value,
-            inputTextStreetAddress: this.refStreetAddress.current!.value,
-            inputCheckbox: this.refCheckbox.current!.checked,
-          },
+          form,
           dataSave: "Data saved!",
         }),
         this.setForm
       );
-      this.handleClear();
+      await this.handleClear();
+    } else {
+      await this.setState((prevState) => ({
+        ...prevState,
+        form,
+        dataSave: "",
+      }));
     }
   };
 

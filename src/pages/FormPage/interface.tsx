@@ -19,5 +19,15 @@ export interface FormState {
     streetAddressError: boolean;
     checkboxError: boolean;
   };
-  formItems: {}[]
+  formItems: {
+    inputTextFirstName?: string;
+    inputTextLastName?: string;
+    inputTextEmail?: string;
+    inputTextPhone?: string;
+    selectorCountry?: string;
+    selectorCity?: string;
+    inputTextStreetAddress?: string;
+    inputCheckbox?: boolean;
+  }[];
+  dataSave: string;
 }

@@ -44,6 +44,7 @@ class FormPage extends React.Component<{}, FormState> {
         checkboxError: true,
       },
       formItems: [],
+      dataSave: "",
     };
   }
 
@@ -99,9 +100,15 @@ class FormPage extends React.Component<{}, FormState> {
     return isValid;
   }
 
-  handleClick = (event: { preventDefault: () => void }) => {
+  setForm = () => {
+    this.setState({
+      formItems: [...this.state.formItems, this.state.form],
+    });
+  };
+
+  handleClick = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    if (this.checkValidForm() === true) {
+    if (this.checkValidForm() === false) {
       this.setState((prevState) => ({
         ...prevState,
         form: {
@@ -114,12 +121,31 @@ class FormPage extends React.Component<{}, FormState> {
           inputTextStreetAddress: this.refStreetAddress.current!.value,
           inputCheckbox: this.refCheckbox.current!.checked,
         },
-        formItems: [...this.state.formItems, this.state.form],
+        dataSave: "",
       }));
+    } else {
+      this.setState(
+        (prevState) => ({
+          ...prevState,
+          form: {
+            inputTextFirstName: this.refFirstName.current!.value,
+            inputTextLastName: this.refLastName.current!.value,
+            inputTextEmail: this.refEmail.current!.value,
+            inputTextPhone: this.refPhone.current!.value,
+            selectorCountry: this.refCountry.current!.value,
+            selectorCity: this.refCity.current!.value,
+            inputTextStreetAddress: this.refStreetAddress.current!.value,
+            inputCheckbox: this.refCheckbox.current!.checked,
+          },
+          dataSave: "Data saved!",
+        }),
+        this.setForm
+      );
+      this.handleClear();
     }
   };
 
-  componentDidUpdate() {
+  handleClear = () => {
     (this.refFirstName.current!.value = ""),
       (this.refLastName.current!.value = ""),
       (this.refEmail.current!.value = ""),
@@ -128,7 +154,7 @@ class FormPage extends React.Component<{}, FormState> {
       (this.refCity.current!.value = "Not selected"),
       (this.refStreetAddress.current!.value = ""),
       (this.refCheckbox.current!.checked = false);
-  }
+  };
 
   render() {
     return (
@@ -173,11 +199,11 @@ class FormPage extends React.Component<{}, FormState> {
               <button onClick={this.handleClick} className="formbold-btn">
                 Register Now
               </button>
+              <div className="form-message-save">{this.state.dataSave}</div>
             </form>
           </div>
         </div>
-        {/* {console.log(this.state.formItems)} */}
-        <FormCardList form={this.state.form} formItems={this.state.formItems} />
+        <FormCardList formItems={this.state.formItems} />
       </>
     );
   }

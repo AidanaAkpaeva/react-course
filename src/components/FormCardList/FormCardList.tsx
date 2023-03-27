@@ -15,14 +15,15 @@ class FormCardList extends Component<CardListProps, CardListState> {
         {this.props.formItems.map((_, index) => (
           <FormCardItem
             key={index}
-            firstName={this.props.form.inputTextFirstName}
-            lastName={this.props.form.inputTextLastName}
-            email={this.props.form.inputTextEmail}
-            phone={this.props.form.inputTextPhone}
-            country={this.props.form.selectorCountry}
-            city={this.props.form.selectorCity}
-            addressStreet={this.props.form.inputTextStreetAddress}
+            firstName={this.props.formItems[index].inputTextFirstName}
+            lastName={this.props.formItems[index].inputTextLastName}
+            email={this.props.formItems[index].inputTextEmail}
+            phone={this.props.formItems[index].inputTextPhone}
+            country={this.props.formItems[index].selectorCountry}
+            city={this.props.formItems[index].selectorCity}
+            addressStreet={this.props.formItems[index].inputTextStreetAddress}
           />
+          
         ))}
       </ul>
     );

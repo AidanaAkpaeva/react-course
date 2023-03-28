@@ -27,11 +27,11 @@ class FormSelectAddress extends Component<selectProps, selectState> {
               <option key={id}>{nameCountry}</option>
             ))}
           </select>
-          {this.props.addressError.countryError === false ? (
+          {this.props.addressError.countryError === false && (
             <label className="formbold-form-label form-error">
               Select a country
             </label>
-          ) : null}
+          )}
         </div>
         <div>
           <label className="formbold-form-label"> City </label>
@@ -47,11 +47,11 @@ class FormSelectAddress extends Component<selectProps, selectState> {
               <option key={id}>{nameCity}</option>
             ))}
           </select>
-          {this.props.addressError.cityError === false ? (
+          {this.props.addressError.cityError === false && (
             <label className="formbold-form-label form-error">
               Select a city
             </label>
-          ) : null}
+          )}
         </div>
       </div>
     );

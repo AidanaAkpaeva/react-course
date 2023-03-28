@@ -20,11 +20,11 @@ class FormCheckbox extends Component<checkboxProps, checkboxState> {
           I agree to the defined
           <a href="#"> terms, conditions, and policies</a>
         </label>
-        {this.props.checkboxError === false ? (
+        {this.props.checkboxError === false && (
           <label className="formbold-form-label form-error">
             Please, check this box if you want to proceed
           </label>
-        ) : null}
+        )}
       </div>
     );
   }

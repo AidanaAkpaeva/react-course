@@ -1,14 +1,4 @@
 export interface FormState {
-  form: {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    phone?: string;
-    country?: string;
-    city?: string;
-    streetAddress?: string;
-    checkbox?: boolean;
-  };
   formError: {
     firstNameError: boolean;
     lastNameError: boolean;
@@ -27,6 +17,7 @@ export interface FormState {
     country?: string;
     city?: string;
     streetAddress?: string;
+    checkbox?: boolean;
   }[];
-  dataSave: string;
+  dataSave: boolean;
 }

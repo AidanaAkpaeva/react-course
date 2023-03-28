@@ -15,14 +15,18 @@ class FormInputName extends Component<inputNameProps, inputNameState> {
             type="text"
             name="firstname"
             id="firstname"
-            className={this.props.nameError.firstNameError !== false ? "formbold-form-input" : "formbold-form-input form-error-border"}
+            className={
+              this.props.nameError.firstNameError !== false
+                ? "formbold-form-input"
+                : "formbold-form-input form-error-border"
+            }
             ref={this.props.refFirstName}
           />
-          {this.props.nameError.firstNameError === false ? (
+          {this.props.nameError.firstNameError === false && (
             <label className="formbold-form-label form-error">
-             Enter the First name with a uppercase letter
+              Enter the First name with a uppercase letter
             </label>
-          ) : null}
+          )}
         </div>
         <div>
           <label className="formbold-form-label"> Last name </label>
@@ -30,14 +34,18 @@ class FormInputName extends Component<inputNameProps, inputNameState> {
             type="text"
             name="lastname"
             id="lastname"
-            className={this.props.nameError.lastNameError !== false ? "formbold-form-input" : "formbold-form-input form-error-border"}
+            className={
+              this.props.nameError.lastNameError !== false
+                ? "formbold-form-input"
+                : "formbold-form-input form-error-border"
+            }
             ref={this.props.refLastName}
           />
-           {this.props.nameError.lastNameError === false ? (
+          {this.props.nameError.lastNameError === false && (
             <label className="formbold-form-label form-error">
-             Enter the Last name with a uppercase letter
+              Enter the Last name with a uppercase letter
             </label>
-          ) : null}
+          )}
         </div>
       </div>
     );

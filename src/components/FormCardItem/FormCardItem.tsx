@@ -1,6 +1,8 @@
 import "./style.scss";
+import { CardItemProps } from "./interface";
 
-const FormCardItem = ({
+
+const FormCardItem:React.FC<CardItemProps> = ({
   firstName,
   lastName,
   email,

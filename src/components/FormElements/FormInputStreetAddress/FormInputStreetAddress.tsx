@@ -17,14 +17,18 @@ class FormInputStreetAddress extends Component<
           type="text"
           name="address"
           id="address"
-          className={this.props.streetAddressError !== false ? "formbold-form-input" : "formbold-form-input form-error-border"}
+          className={
+            this.props.streetAddressError !== false
+              ? "formbold-form-input"
+              : "formbold-form-input form-error-border"
+          }
           ref={this.props.refStreetAddress}
         />
-        {this.props.streetAddressError === false ? (
+        {this.props.streetAddressError === false && (
           <label className="formbold-form-label form-error">
             Enter the street addredss
           </label>
-        ) : null}
+        )}
       </div>
     );
   }

@@ -6,5 +6,3 @@ export interface inputNameProps {
     lastNameError: boolean;
   };
 }
-
-export interface inputNameState {}

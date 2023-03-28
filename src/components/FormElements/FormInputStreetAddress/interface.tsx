@@ -3,4 +3,3 @@ export interface inputSteetAddressProps {
   streetAddressError: boolean;
 }
 
-export interface inputSteetAddressState {}

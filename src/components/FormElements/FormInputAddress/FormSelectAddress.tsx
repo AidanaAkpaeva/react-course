@@ -3,9 +3,9 @@ import { Component } from "react";
 import { countryList } from "../../../helpers/CountryList";
 import { cityList } from "../../../helpers/CityList";
 
-import { selectProps, selectState } from "./interface";
+import { selectProps } from "./interface";
 
-class FormSelectAddress extends Component<selectProps, selectState> {
+class FormSelectAddress extends Component<selectProps> {
   constructor(props: selectProps) {
     super(props);
   }

@@ -1,10 +1,7 @@
 import { Component } from "react";
-import { inputSteetAddressProps, inputSteetAddressState } from "./interface";
+import { inputSteetAddressProps } from "./interface";
 
-class FormInputStreetAddress extends Component<
-  inputSteetAddressProps,
-  inputSteetAddressState
-> {
+class FormInputStreetAddress extends Component<inputSteetAddressProps> {
   constructor(props: inputSteetAddressProps) {
     super(props);
   }

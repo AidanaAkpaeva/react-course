@@ -6,4 +6,3 @@ export interface InputChangeInterface {
   target: HTMLInputElement;
 }
 
-export interface InputProps {}

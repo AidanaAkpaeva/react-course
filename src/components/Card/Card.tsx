@@ -1,7 +1,7 @@
 import "./style.scss";
 import { CardProps } from "./interface";
 
-const Card = ({ image, descr, price, additional }: CardProps) => {
+const Card: React.FC<CardProps> = ({ image, descr, price, additional }) => {
   return (
     <li className="product-wrapper">
       <div className="product-item">

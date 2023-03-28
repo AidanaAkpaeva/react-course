@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { contactsProps, contactsState } from "./interface";
+import { contactsProps } from "./interface";
 
-class Contacts extends Component<contactsProps, contactsState> {
+class Contacts extends Component<contactsProps> {
   constructor(props: contactsProps) {
     super(props);
   }

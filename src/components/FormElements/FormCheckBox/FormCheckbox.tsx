@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { checkboxProps, checkboxState } from "./interface";
+import { checkboxProps } from "./interface";
 
-class FormCheckbox extends Component<checkboxProps, checkboxState> {
+class FormCheckbox extends Component<checkboxProps> {
   constructor(props: checkboxProps) {
     super(props);
   }

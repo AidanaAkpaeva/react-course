@@ -9,5 +9,3 @@ export interface CardListProps {
     streetAddress?: string;
   }[];
 }
-
-export interface CardListState {}

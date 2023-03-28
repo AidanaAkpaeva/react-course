@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { inputNameProps, inputNameState } from "./interface";
+import { inputNameProps } from "./interface";
 
-class FormInputName extends Component<inputNameProps, inputNameState> {
+class FormInputName extends Component<inputNameProps> {
   constructor(props: inputNameProps) {
     super(props);
   }

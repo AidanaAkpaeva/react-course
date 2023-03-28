@@ -5,6 +5,4 @@ export interface selectProps {
     countryError: boolean;
     cityError: boolean;
   };
-};
-
-export interface selectState {}
+}

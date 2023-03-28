@@ -5,6 +5,4 @@ export interface contactsProps {
     emailError: boolean;
     phoneError: boolean;
   };
-};
-
-export interface contactsState {}
+}

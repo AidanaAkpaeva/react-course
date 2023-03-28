@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./scss/App.scss";
 import "./font-awesome-4.7.0/css/font-awesome.min.css";
 
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import { AppRouter } from "./router/AppRouter";
 
 function App() {

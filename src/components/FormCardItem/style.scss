@@ -1,0 +1,28 @@
+.formCardItem-content {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  background-color: white;
+  text-align: left;
+  border: 1px solid #dde3ec;
+  border-radius: 2px;
+}
+
+.formCardItem-title {
+  color: #07074d;
+}
+
+.formCardItem-wrapper {
+  padding: 10px 0;
+  border-bottom: 1px solid #dde3ec;
+  color: #2d374e;
+  font-weight: 600;
+}
+
+.formCardItem-inner {
+  color: #2d374e;
+  font-weight: 400;
+}

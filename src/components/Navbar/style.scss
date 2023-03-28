@@ -1,9 +1,14 @@
+.nav {
+  background-color: #2b2929;
+}
+
 .nav-container {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-evenly;
   height: 20vh;
-  background-color: #2b2929;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .nav-link {
@@ -16,4 +21,9 @@
 .active {
   color: var(--main-color);
   border-bottom: 1px solid var(--main-color);
+}
+
+.nav-link:last-child:before {
+  font-family: FontAwesome;
+  content: "\f234";
 }

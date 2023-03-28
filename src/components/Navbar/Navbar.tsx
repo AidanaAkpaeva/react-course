@@ -1,16 +1,15 @@
 import { NavLink } from "react-router-dom";
+import {navMenu} from "../../helpers/navMenu";
+
 import "./style.scss";
 
 const Navbar = () => {
   return (
     <nav className="nav">
       <div className="nav-container">
-        <NavLink to="/" className="nav-link">
-          Home
-        </NavLink>
-        <NavLink to="/about" className="nav-link">
-          About
-        </NavLink>
+        {navMenu.map(({id, path, title}) => (
+          <NavLink key={id} to={path} className="nav-link">{title}</NavLink>
+        ))}
       </div>
     </nav>
   );

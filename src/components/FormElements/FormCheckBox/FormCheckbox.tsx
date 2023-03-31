@@ -1,33 +1,30 @@
-import { Component } from "react";
-import { checkboxProps, checkboxState } from "./interface";
+import React from "react";
+import { checkboxProps } from "./interface";
 
-class FormCheckbox extends Component<checkboxProps, checkboxState> {
-  constructor(props: checkboxProps) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className="formbold-checkbox-wrapper">
-        <label className="formbold-checkbox-label">
-          <div className="formbold-relative">
-            <input
-              type="checkbox"
-              id="supportCheckbox"
-              className="formbold-input-checkbox"
-              ref={this.props.refCheckbox}
-            />
-          </div>
-          I agree to the defined
-          <a href="#"> terms, conditions, and policies</a>
+const FormCheckbox: React.FC<checkboxProps> = ({ register, errors }) => {
+  return (
+    <div className="formbold-checkbox-wrapper">
+      <label className="formbold-checkbox-label">
+        <div className="formbold-relative">
+          <input
+            {...register("checkbox", {
+              required: "Please, check this box if you want to proceed",
+            })}
+            type="checkbox"
+            id="supportCheckbox"
+            className="formbold-input-checkbox"
+          />
+        </div>
+        I agree to the defined
+        <a href="#"> terms, conditions, and policies</a>
+      </label>
+      {errors?.checkbox && (
+        <label className="formbold-form-label form-error">
+          {errors.checkbox.message}
         </label>
-        {this.props.checkboxError === false && (
-          <label className="formbold-form-label form-error">
-            Please, check this box if you want to proceed
-          </label>
-        )}
-      </div>
-    );
-  }
-}
+      )}
+    </div>
+  );
+};
 
 export default FormCheckbox;

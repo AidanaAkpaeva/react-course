@@ -1,56 +1,60 @@
-import { Component } from "react";
-import { contactsProps, contactsState } from "./interface";
+import React from "react";
+import { contactsProps } from "./interface";
 
-class Contacts extends Component<contactsProps, contactsState> {
-  constructor(props: contactsProps) {
-    super(props);
+const Contacts: React.FC<contactsProps> = ({ register, errors }) => {
+  enum messageError {
+    empty = "The field is required",
+    email = "Enter the correct email address",
+    phone = "Enter the correct phone number",
   }
 
-  render() {
-    return (
-      <div className="formbold-input-flex">
-        <div>
-          <label className="formbold-form-label"> Email </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className={
-              this.props.contactsError.emailError !== false
-                ? "formbold-form-input"
-                : "formbold-form-input form-error-border"
-            }
-            ref={this.props.refEmail}
-          />
-          {this.props.contactsError.emailError === false && (
-            <label className="formbold-form-label form-error">
-              Enter the correct email address
-            </label>
-          )}
-        </div>
-        <div>
-          <label className="formbold-form-label"> Phone number </label>
-          <input
-            type="tel"
-            name="phone"
-            pattern="/\+7 ([0-9]{3}) [0-9]{3}-[0-9]{2}-[0-9]{2}/"
-            id="phone"
-            className={
-              this.props.contactsError.phoneError !== false
-                ? "formbold-form-input"
-                : "formbold-form-input form-error-border"
-            }
-            ref={this.props.refPhone}
-          />
-          {this.props.contactsError.phoneError === false && (
-            <label className="formbold-form-label form-error">
-              Enter the correct phone number
-            </label>
-          )}
-        </div>
+  const emailRegExp = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+  const phoneRegExp = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/g;
+
+  return (
+    <div className="formbold-input-flex">
+      <div>
+        <label className="formbold-form-label"> Email </label>
+        <input
+          {...register("email", {
+            required: messageError.empty,
+            pattern: {
+              value: emailRegExp,
+              message: messageError.email,
+            },
+          })}
+          type="email"
+          id="email"
+          className="formbold-form-input"
+        />
+        {errors?.email && (
+          <label className="formbold-form-label form-error">
+            {errors.email.message}
+          </label>
+        )}
       </div>
-    );
-  }
-}
+      <div>
+        <label className="formbold-form-label"> Phone number </label>
+        <input
+          {...register("phone", {
+            required: messageError.empty,
+            pattern: {
+              value: phoneRegExp,
+              message: messageError.phone,
+            },
+          })}
+          type="tel"
+          id="phone"
+          className="formbold-form-input"
+        />
+        {errors?.phone && (
+          <label className="formbold-form-label form-error">
+            {errors.phone.message}
+          </label>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default Contacts;

@@ -1,9 +1,5 @@
-export interface InputState {
-  inputValue: string | null;
-}
+export interface InputState {}
 
 export interface InputChangeInterface {
   target: HTMLInputElement;
 }
-
-export interface InputProps {}

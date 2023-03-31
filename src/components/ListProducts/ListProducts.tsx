@@ -6,18 +6,17 @@ import "./style.scss";
 const ListProducts = () => {
   return (
     <ul className="products">
-      {cardList
-        .map((card, index) => {
-          return (
-            <Card
-              key={index}
-              descr={card.descr}
-              image={card.image}
-              price={card.price}
-              additional={card.additional}
-            />
-          );
-        })}
+      {cardList.map(({ descr, image, price, additional }, index) => {
+        return (
+          <Card
+            key={index}
+            descr={descr}
+            image={image}
+            price={price}
+            additional={additional}
+          />
+        );
+      })}
     </ul>
   );
 };

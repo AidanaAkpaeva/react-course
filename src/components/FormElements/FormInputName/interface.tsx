@@ -1,10 +1,7 @@
-export interface inputNameProps {
-  refFirstName: React.RefObject<HTMLInputElement>;
-  refLastName: React.RefObject<HTMLInputElement>;
-  nameError: {
-    firstNameError: boolean;
-    lastNameError: boolean;
-  };
-}
+import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { formState } from "../../../pages/FormPage/interface";
 
-export interface inputNameState {}
+export interface inputNameProps {
+  register: UseFormRegister<formState>;
+  errors: FieldErrors<formState>;
+}

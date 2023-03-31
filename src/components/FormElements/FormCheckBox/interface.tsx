@@ -1,6 +1,7 @@
-export interface checkboxProps {
-  refCheckbox?: React.Ref<HTMLInputElement>;
-  checkboxError: boolean;
-};
+import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { formState } from "../../../pages/FormPage/interface";
 
-export interface checkboxState {};
+export interface checkboxProps {
+  register: UseFormRegister<formState>;
+  errors: FieldErrors<formState>;
+}

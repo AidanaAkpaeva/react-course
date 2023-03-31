@@ -4,14 +4,17 @@ import { countryList } from "../../../helpers/CountryList";
 import { cityList } from "../../../helpers/CityList";
 
 const FormSelectAddress: React.FC<selectProps> = ({ register, errors }) => {
+  const isValid = (value) => {
+    return value !== "Not selected" || "The field is required";
+  };
+
   return (
     <div className="formbold-input-flex">
       <div>
         <label className="formbold-form-label"> Country </label>
         <select
           {...register("country", {
-            validate: (value) =>
-              value !== "Not selected" || "The field is required",
+            validate: (value) => isValid(value),
           })}
           className="formbold-form-input"
         >
@@ -29,8 +32,7 @@ const FormSelectAddress: React.FC<selectProps> = ({ register, errors }) => {
         <label className="formbold-form-label"> City </label>
         <select
           {...register("city", {
-            validate: (value) =>
-              value !== "Not selected" || "The field is required",
+            validate: (value) => isValid(value),
           })}
           className="formbold-form-input"
         >

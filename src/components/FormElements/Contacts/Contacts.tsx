@@ -2,16 +2,25 @@ import React from "react";
 import { contactsProps } from "./interface";
 
 const Contacts: React.FC<contactsProps> = ({ register, errors }) => {
+  enum messageError {
+    empty = "The field is required",
+    email = "Enter the correct email address",
+    phone = "Enter the correct phone number",
+  }
+
+  const emailRegExp = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
+  const phoneRegExp = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/g;
+
   return (
     <div className="formbold-input-flex">
       <div>
         <label className="formbold-form-label"> Email </label>
         <input
           {...register("email", {
-            required: "The field is required",
+            required: messageError.empty,
             pattern: {
-              value: /[a-z0-9]+@[a-z]+.[a-z]{2,3}/,
-              message: "Enter the correct email address",
+              value: emailRegExp,
+              message: messageError.email,
             },
           })}
           type="email"
@@ -28,11 +37,10 @@ const Contacts: React.FC<contactsProps> = ({ register, errors }) => {
         <label className="formbold-form-label"> Phone number </label>
         <input
           {...register("phone", {
-            required: "The field is required",
+            required: messageError.empty,
             pattern: {
-              value:
-                /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/g,
-              message: "Enter the correct phone number",
+              value: phoneRegExp,
+              message: messageError.phone,
             },
           })}
           type="tel"

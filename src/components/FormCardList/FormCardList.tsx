@@ -7,10 +7,8 @@ const FormCardList: React.FC<CardListProps> = ({ formItems }) => {
   return (
     <ul className="container formCardList">
       {formItems.map(
-        (
-          { firstName, lastName, email, phone, country, city, streetAddress },
-          index
-        ) => (
+        ({ firstName, lastName, email, phone, country, city, streetAddress }, 
+          index) => (
           <FormCardItem
             key={index}
             firstName={firstName}

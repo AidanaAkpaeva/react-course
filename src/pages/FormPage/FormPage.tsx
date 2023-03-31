@@ -20,10 +20,10 @@ const FormPage: React.FC<{}> = () => {
     mode: "onChange",
   });
 
-  const [formItem, setFormitem] = useState([] as Array<formState>);
+  const [formItems, setFormItem] = useState<Array<formState>>([]);
 
-  const onClick: SubmitHandler<formState> = (formItems) => {
-    setFormitem([...formItem, formItems]);
+  const onClick: SubmitHandler<formState> = (formItem) => {
+    setFormItem([...formItems, formItem]);
     reset();
   };
 
@@ -34,19 +34,14 @@ const FormPage: React.FC<{}> = () => {
           <form>
             <h2 className="formbold-form-title">Create your account now!</h2>
 
-            {/* Name */}
             <FormInputName register={register} errors={errors} />
 
-            {/* Contacts */}
             <Contacts register={register} errors={errors} />
 
-            {/* Address */}
             <FormSelectAddress register={register} errors={errors} />
 
-            {/* Street Address */}
             <FormInputStreetAddress register={register} errors={errors} />
 
-            {/* checkbox */}
             <FormCheckbox register={register} errors={errors} />
             <button onClick={handleSubmit(onClick)} className="formbold-btn">
               Register Now
@@ -54,7 +49,7 @@ const FormPage: React.FC<{}> = () => {
           </form>
         </div>
       </div>
-      <FormCardList formItems={formItem} />
+      <FormCardList formItems={formItems} />
     </>
   );
 };

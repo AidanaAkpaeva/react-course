@@ -2,16 +2,23 @@ import React from "react";
 import { inputNameProps } from "./interface";
 
 const FormInputName: React.FC<inputNameProps> = ({ register, errors }) => {
+  enum messageError {
+    empty = "The field is required",
+    upperCase = "Enter the Name with a uppercase letter",
+  }
+
+  const regExp = /^[A-Z]+[a-zA-Z]*$/;
+
   return (
     <div className="formbold-input-flex">
       <div>
         <label className="formbold-form-label">First name</label>
         <input
           {...register("firstName", {
-            required: "The field is required",
+            required: messageError.empty,
             pattern: {
-              value: /^[A-Z]+[a-zA-Z]*$/,
-              message: "Enter the First name with a uppercase letter",
+              value: regExp,
+              message: messageError.upperCase,
             },
           })}
           type="text"
@@ -28,10 +35,10 @@ const FormInputName: React.FC<inputNameProps> = ({ register, errors }) => {
         <label className="formbold-form-label"> Last name </label>
         <input
           {...register("lastName", {
-            required: "The field is required",
+            required: messageError.empty,
             pattern: {
-              value: /^[A-Z]+[a-zA-Z]*$/,
-              message: "Enter the Last name with a uppercase letter",
+              value: regExp,
+              message: messageError.upperCase,
             },
           })}
           type="text"

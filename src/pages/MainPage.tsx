@@ -6,7 +6,7 @@ import "./style.scss";
 const HomePage = () => {
   return (
     <div className="container-home container">
-      <Searchbar inputValue={""} />
+      <Searchbar />
       <ListProducts />
     </div>
   );

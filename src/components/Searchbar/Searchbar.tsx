@@ -4,13 +4,11 @@ import "./style.scss";
 
 const Searchbar: React.FC<InputState> = () => {
   const [inputValue, setInputValue] = useState(() => {
-    const saved = localStorage.getItem("inputValue");
-    const initialValue = JSON.parse(saved!);
-    return initialValue || "";
+    return localStorage.getItem("inputValue") || "";
   });
 
   useEffect(() => {
-    localStorage.setItem("inputValue", JSON.stringify(inputValue));
+    localStorage.setItem("inputValue", inputValue);
   }, [inputValue]);
 
   const handleChange = (event: InputChangeInterface): void => {
@@ -29,7 +27,7 @@ const Searchbar: React.FC<InputState> = () => {
         placeholder="Search..."
         name="inputValue"
         onChange={handleChange}
-        value={inputValue || ""}
+        value={inputValue}
       />
       <button className="btn-reset" onClick={handleReset}></button>
     </div>

@@ -1,34 +1,28 @@
-import { Component } from "react";
+import React from "react";
 import { inputSteetAddressProps } from "./interface";
 
-class FormInputStreetAddress extends Component<inputSteetAddressProps> {
-  constructor(props: inputSteetAddressProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="formbold-mb-3">
-        <label className="formbold-form-label">Street Address</label>
-        <input
-          type="text"
-          name="address"
-          id="address"
-          className={
-            this.props.streetAddressError !== false
-              ? "formbold-form-input"
-              : "formbold-form-input form-error-border"
-          }
-          ref={this.props.refStreetAddress}
-        />
-        {this.props.streetAddressError === false && (
-          <label className="formbold-form-label form-error">
-            Enter the street addredss
-          </label>
-        )}
-      </div>
-    );
-  }
-}
+const FormInputStreetAddress: React.FC<inputSteetAddressProps> = ({
+  register,
+  errors,
+}) => {
+  return (
+    <div className="formbold-mb-3">
+      <label className="formbold-form-label">Street Address</label>
+      <input
+        {...register("streetAddress", {
+          required: "The field is required",
+        })}
+        type="text"
+        id="address"
+        className="formbold-form-input"
+      />
+      {errors?.streetAddress && (
+        <label className="formbold-form-label form-error">
+          {errors.streetAddress.message}
+        </label>
+      )}
+    </div>
+  );
+};
 
 export default FormInputStreetAddress;

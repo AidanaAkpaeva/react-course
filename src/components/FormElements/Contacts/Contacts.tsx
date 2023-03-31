@@ -1,56 +1,52 @@
-import { Component } from "react";
+import React from "react";
 import { contactsProps } from "./interface";
 
-class Contacts extends Component<contactsProps> {
-  constructor(props: contactsProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="formbold-input-flex">
-        <div>
-          <label className="formbold-form-label"> Email </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className={
-              this.props.contactsError.emailError !== false
-                ? "formbold-form-input"
-                : "formbold-form-input form-error-border"
-            }
-            ref={this.props.refEmail}
-          />
-          {this.props.contactsError.emailError === false && (
-            <label className="formbold-form-label form-error">
-              Enter the correct email address
-            </label>
-          )}
-        </div>
-        <div>
-          <label className="formbold-form-label"> Phone number </label>
-          <input
-            type="tel"
-            name="phone"
-            pattern="/\+7 ([0-9]{3}) [0-9]{3}-[0-9]{2}-[0-9]{2}/"
-            id="phone"
-            className={
-              this.props.contactsError.phoneError !== false
-                ? "formbold-form-input"
-                : "formbold-form-input form-error-border"
-            }
-            ref={this.props.refPhone}
-          />
-          {this.props.contactsError.phoneError === false && (
-            <label className="formbold-form-label form-error">
-              Enter the correct phone number
-            </label>
-          )}
-        </div>
+const Contacts: React.FC<contactsProps> = ({ register, errors }) => {
+  return (
+    <div className="formbold-input-flex">
+      <div>
+        <label className="formbold-form-label"> Email </label>
+        <input
+          {...register("email", {
+            required: "The field is required",
+            pattern: {
+              value: /[a-z0-9]+@[a-z]+.[a-z]{2,3}/,
+              message: "Enter the correct email address",
+            },
+          })}
+          type="email"
+          id="email"
+          className="formbold-form-input"
+        />
+        {errors?.email && (
+          <label className="formbold-form-label form-error">
+            {errors.email.message}
+          </label>
+        )}
       </div>
-    );
-  }
-}
+      <div>
+        <label className="formbold-form-label"> Phone number </label>
+        <input
+          {...register("phone", {
+            required: "The field is required",
+            pattern: {
+              value:
+                /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/g,
+              message: "Enter the correct phone number",
+            },
+          })}
+          type="tel"
+          id="phone"
+          className="formbold-form-input"
+        />
+        {errors?.phone && (
+          <label className="formbold-form-label form-error">
+            {errors.phone.message}
+          </label>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default Contacts;

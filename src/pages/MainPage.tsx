@@ -3,10 +3,10 @@ import ListProducts from "../components/ListProducts/ListProducts";
 import Searchbar from "../components/Searchbar/Searchbar";
 import "./style.scss";
 
-const HomePage: React.FC<{}> = () => {
+const HomePage = () => {
   return (
     <div className="container-home container">
-      <Searchbar />
+      <Searchbar inputValue={""} />
       <ListProducts />
     </div>
   );

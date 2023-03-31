@@ -6,7 +6,7 @@ const Searchbar: React.FC<InputState> = () => {
   const [inputValue, setInputValue] = useState(() => {
     const saved = localStorage.getItem("inputValue");
     const initialValue = JSON.parse(saved!);
-    return initialValue || null;
+    return initialValue || "";
   });
 
   useEffect(() => {

@@ -1,5 +1,12 @@
-export interface InputState {}
+import {
+  ChangeEventHandler,
+  KeyboardEventHandler,
+  MouseEventHandler,
+} from "react";
 
 export interface InputChangeInterface {
-  target: HTMLInputElement;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onKeyPress: KeyboardEventHandler<HTMLInputElement>;
+  handleReset: MouseEventHandler<HTMLButtonElement>;
+  value: string;
 }

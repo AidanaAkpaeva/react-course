@@ -1,29 +1,14 @@
 import "./style.scss";
 import { CardProps } from "./interface";
 
-const Card: React.FC<CardProps> = ({ image, descr, price, additional }) => {
+const Card: React.FC<CardProps> = ({ id, image, name, onClick }) => {
   return (
-    <li className="product-wrapper">
-      <div className="product-item">
+    <li key={id} className="product-wrapper">
+      <div className="product-item" onClick={onClick}>
         <img src={image} className="product-image" />
         <div className="product-list">
           <div className="product-content">
-            <p className="product-descr">{descr}</p>
-            <span className="product-price">{price}</span>
-            <p className="product-additional">{additional}</p>
-          </div>
-          <div className="meta">
-            <div className="rating-result">
-              <span className="star active-star"></span>
-              <span className="star active-star"></span>
-              <span className="star active-star"></span>
-              <span className="star"></span>
-              <span className="star"></span>
-            </div>
-            <div className="buttons">
-              <button className="btn btn-cart"></button>
-              <button className="btn btn-favorites"></button>
-            </div>
+            <h4 className="product-descr">{name}</h4>
           </div>
         </div>
       </div>

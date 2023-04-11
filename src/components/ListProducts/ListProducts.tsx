@@ -1,47 +1,39 @@
 import { useState } from "react";
+import axios from "axios";
+
 import Card from "../Card/Card";
 import PopupCard from "../PopupCard/PopupCard";
-import Searchbar from "../Searchbar/Searchbar";
+
 import "./style.scss";
 
-const ListProducts = ({ data }) => {
-  const [inputValue, setInputValue] = useState("");
+const ListProducts = ({ data, inputValue, press }) => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
-  const [press, setPress] = useState(false);
-  if (!data || data.length === 0) {
-    return <h3 className="notFound">No data, sorry</h3>;
-  }
+  const [info, setInfo] = useState(null);
 
-  const clickOpen = (id) => {
-    setOpen(true);
-    setActive(id);
-  };
+  const BASE_PATH = "https://rickandmortyapi.com/api";
+  const CHARACTER_PATH = "/character";
 
-  const clickClose = (id) => {
+  const clickClose = (event) => {
     setOpen(false);
-    setActive(id);
+    setActive(event.target.id);
   };
 
-  const onKeyPress = (event) => {
-    event.key === "Enter" ? setPress(true) : setPress(false);
-  };
-
-  const handleReset = () => {
-    setPress(false);
-    setInputValue("");
+  const clickOpen = (event) => {
+    setOpen(true);
+    setActive(event.target.id);
+    axios.get(BASE_PATH + CHARACTER_PATH).then((data) => {
+      setInfo(data.data.results);
+    });
   };
 
   return (
     <>
-      <Searchbar
-        onChange={(event) => setInputValue(event.target.value)}
-        onKeyPress={onKeyPress}
-        handleReset={handleReset}
-        value={inputValue}
-      />
+      {(!data || data.length === 0) && (
+        <h3 className="notFound">No data, sorry</h3>
+      )}
       <ul className="products">
-        {data.map(({ id, name, image, status, gender, origin, location }) => {
+        {data?.map(({ id, name, image }) => {
           if (
             inputValue !== "" &&
             press === true &&
@@ -54,18 +46,10 @@ const ListProducts = ({ data }) => {
                   id={id}
                   name={name}
                   image={image}
-                  onClick={() => clickOpen(id)}
+                  onClick={clickOpen}
                 />
-                {open && id === active && (
-                  <PopupCard
-                    name={name}
-                    image={image}
-                    status={status}
-                    gender={gender}
-                    origin={origin.name}
-                    location={location.name}
-                    onClick={() => clickClose(id)}
-                  />
+                {open === true && active == id && (
+                  <PopupCard info={info} onClick={clickClose} active={active} />
                 )}
               </>
             );

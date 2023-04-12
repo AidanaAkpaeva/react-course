@@ -15,9 +15,17 @@ const Card: React.FC<CardProps> = ({ id, image, name }) => {
   const clickOpen = async (event) => {
     setOpen(true);
     setActive(event.target.id);
-    await axios.get(BASE_PATH + CHARACTER_PATH).then((data) => {
-      setInfo(data.data.results);
-    });
+    try {
+      await axios.get(BASE_PATH + CHARACTER_PATH).then((data) => {
+        setInfo(data.data.results);
+      });
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.log(error.status);
+      } else {
+        console.error(error);
+      }
+    }
   };
 
   const clickClose = () => {

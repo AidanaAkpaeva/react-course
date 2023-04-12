@@ -1,6 +1,5 @@
 export interface CardProps {
+  id: string;
   image: string;
-  descr: string;
-  price: string;
-  additional: string;
+  name: string;
 }

@@ -1,23 +1,27 @@
-import { cardList } from "./../../helpers/CardList";
 import Card from "../Card/Card";
 
+import { ListProps } from "./ interface";
 import "./style.scss";
 
-const ListProducts = () => {
+const ListProducts: React.FC<ListProps> = ({ data, inputValue, press }) => {
   return (
-    <ul className="products">
-      {cardList.map(({ descr, image, price, additional }, index) => {
-        return (
-          <Card
-            key={index}
-            descr={descr}
-            image={image}
-            price={price}
-            additional={additional}
-          />
-        );
-      })}
-    </ul>
+    <>
+      {!data || data.length === 0 ? (
+        <h3 className="notFound">No data, sorry</h3>
+      ) : (
+        <ul className="products">
+          {data?.map(({ id, name, image }) => {
+            if (
+              inputValue !== "" &&
+              press === true &&
+              name.toLowerCase().includes(inputValue.toLowerCase())
+            ) {
+              return <Card key={id} id={id} name={name} image={image} />;
+            }
+          })}
+        </ul>
+      )}
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
-import CloseSVG from "./CloseSVG";
+import CloseSVG from "../../helpers/CloseSVG";
 import "./style.scss";
-const PopupCard = ({ onClick, info, active }) => {
+
+const PopupCard = ({ onClickClose, info, active }) => {
   return (
-    <div className="modal-wrapper" onClick={onClick}>
+    <div className="modal-wrapper" onClick={onClickClose}>
       {info?.map(({ id, name, image, status, gender, origin, location }) => {
         if (active == id) {
           return (
@@ -32,7 +33,7 @@ const PopupCard = ({ onClick, info, active }) => {
                   {location.name}
                 </p>
               </div>
-              <CloseSVG onClick={onClick} />
+              <CloseSVG onClick={onClickClose} />
             </div>
           );
         }
